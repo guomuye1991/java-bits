@@ -54,10 +54,6 @@ subprojects {
         compile "com.aliyun:aliyun-java-sdk-dysmsapi:${aliYunSmsVersion}"
         compile "org.apache.commons:commons-lang3:${commonLang3Version}"
         compile "org.apache.httpcomponents:httpclient:${httpclientVersion}"
-//        compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisBootVersion}"
-//        compileOnly "org.springframework.boot:spring-boot-configuration-processor"
-//        compile "org.springframework.boot:spring-boot-starter-data-redis"
-//        testCompile "org.springframework.boot:spring-boot-starter-test"
     }
 
     configurations.compile.resolutionStrategy {
