@@ -1,0 +1,66 @@
+group 'com.8bits'
+version '1.0-SNAPSHOT'
+
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: "idea"
+    apply plugin: 'build-announcements'
+
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+
+    ext {
+        compileJava.options.encoding = 'UTF-8'
+        compileTestJava.options.encoding = 'UTF-8'
+        junitVersion = "4.12"
+        lombokVersion = "1.16.20"
+        jacksonVersion = "2.8.8"
+        commonLang3Version="3.4"
+        //http
+        httpclientVersion="4.4.1"
+        //db
+        mysqlVersion = '5.1.39'
+        druidVersion = '1.1.10'
+        // spring
+        springBootVersion = '2.0.3.RELEASE'
+        mybatisBootVersion = '1.3.2'
+        //ali
+        aliPayVersion = "1.0.0"
+        aliYunCoreVersion = "3.7.1"
+        aliYunSmsVersion = "1.1.0"
+        //wx
+        wxPayVersion = "0.0.3"
+
+    }
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    dependencies {
+        testCompile "junit:junit:${junitVersion}"
+        compile files("../lib/alipay-api-${aliPayVersion}.jar")
+        compile "com.github.wxpay:wxpay-sdk:${wxPayVersion}"
+        compile "org.projectlombok:lombok:${lombokVersion}"
+        compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+        compile "mysql:mysql-connector-java:${mysqlVersion}"
+        compile "com.alibaba:druid:${druidVersion}"
+        compile "com.aliyun:aliyun-java-sdk-core:${aliYunCoreVersion}"
+        compile "com.aliyun:aliyun-java-sdk-dysmsapi:${aliYunSmsVersion}"
+        compile "org.apache.commons:commons-lang3:${commonLang3Version}"
+        compile "org.apache.httpcomponents:httpclient:${httpclientVersion}"
+//        compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisBootVersion}"
+//        compileOnly "org.springframework.boot:spring-boot-configuration-processor"
+//        compile "org.springframework.boot:spring-boot-starter-data-redis"
+//        testCompile "org.springframework.boot:spring-boot-starter-test"
+    }
+
+    configurations.compile.resolutionStrategy {
+        failOnVersionConflict()
+    }
+}
