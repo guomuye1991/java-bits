@@ -1,6 +1,0 @@
-group 'com.8bits'
-version '1.0-SNAPSHOT'
-
-dependencies {
-    compile project(":common-util")
-}

@@ -1,5 +1,7 @@
 rootProject.name = 'java-bits'
-include 'pay-api'
-include 'pay-api'
-include 'common-util'
+include 'util-common'
+include 'api-pay'
+include 'api-sms'
+include 'api-wechat'
+include 'spec-dev'
 
