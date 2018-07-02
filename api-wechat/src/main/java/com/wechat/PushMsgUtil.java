@@ -37,27 +37,27 @@ public class PushMsgUtil {
         jsonData.put("template_id", templateId);
         jsonData.put("url", toUrl);
         jsonData.put("data", data);
-        httppost.setEntity(new ByteArrayEntity(JSONUtil.toJson(jsonData).getBytes(), ContentType.APPLICATION_JSON));
+        httppost.setEntity(new ByteArrayEntity(JSONUtil.toStr(jsonData).getBytes(), ContentType.APPLICATION_JSON));
         CloseableHttpResponse response;
         try {
             response = httpclient.execute(httppost);
             HttpEntity entity = response.getEntity();
             if (entity != null) {
                 responseText = EntityUtils.toString(entity, "UTF-8");
-                LOGGER.info("推送用户消息: {}", responseText);
+                System.out.println(String.format("推送用户消息: %s", responseText));
             }
         } catch (IOException e) {
-            LOGGER.error("", e);
+            e.printStackTrace();
         } finally {
             try {
                 httpclient.close();
             } catch (IOException e) {
-                LOGGER.error("", e);
+                e.printStackTrace();
             }
         }
     }
 
-    public static class MsgItem{
+    public static class MsgItem {
 
         private String value;
         private String color;
