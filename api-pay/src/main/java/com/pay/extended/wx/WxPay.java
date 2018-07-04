@@ -154,6 +154,9 @@ public abstract class WxPay implements PayApi {
         Map<String, String> rawData;
         boolean check;
         try {
+            //TODO 存在XXE漏洞需要进行修复
+            //dbf.setExpandEntityReferences(false);
+            //dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
             rawData = WXPayUtil.xmlToMap((String) notifyParam);
             check = wxpay.isPayResultNotifySignatureValid(rawData);
         } catch (Exception e) {
